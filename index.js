@@ -21,7 +21,7 @@ function onListen() {
   console.log(`Running on port ${port}`)
 }
 
-const server = app.listen(4000, onListen)
+const server = app.listen(port, onListen)
 
 const io = socketIo.listen(server)
 
