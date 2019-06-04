@@ -21,3 +21,15 @@ function onListen() {
 }
 
 const server = app.listen(4000, onListen)
+
+const io = socketIo.listen(server)
+
+io.on(
+  'connection', 
+  user => {
+  console.log('client.id test:', user.id)
+
+    user.on(
+      'disconnect', 
+      () => console.log('disconnect test:', user.id))
+})
