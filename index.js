@@ -18,7 +18,7 @@ app
   .use(gamesRouter)
 
 function onListen() {
-  console.log('Running on PORT 4000')
+  console.log(`Running on port ${port}`)
 }
 
 const server = app.listen(4000, onListen)
