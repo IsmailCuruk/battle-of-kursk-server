@@ -2,6 +2,7 @@ const express = require('express');
 const socketIo = require('socket.io');
 const bodyParser = require('body-parser');
 const gamesRouter = require('./games/routes');
+const loginRouter = require('./auth/routes')
 const colors = require('colors');
 const cors = require('cors')
 
@@ -12,7 +13,7 @@ const port = process.env.PORT || 4000
 app
   .use(cors())
   .use(bodyParser.json())
-  .use(gamesRouter)
+  .use(gamesRouter, loginRouter)
 
 const server = app.listen(port, () => console.log(`Listening on port ${port}`.green))
 const io = socketIo.listen(server)
