@@ -1,10 +1,11 @@
-const express = require('express');
-const socketIo = require('socket.io');
-const bodyParser = require('body-parser');
-const gamesRouter = require('./games/routes');
-const colors = require('colors');
+const express = require('express')
+const socketIo = require('socket.io')
+const bodyParser = require('body-parser')
+const loginRouter = require('./auth/routes')
+const usersRouter = require('./users/routes')
 const cors = require('cors')
 
+const colors = require('colors');
 
 const app = express()
 const port = process.env.PORT || 4000
@@ -12,29 +13,11 @@ const port = process.env.PORT || 4000
 app
   .use(cors())
   .use(bodyParser.json())
-  .use(gamesRouter)
+  .use(loginRouter)
+  .use(usersRouter)
 
-const server = app.listen(port, () => console.log(`Listening on port ${port}`.green))
-const io = socketIo.listen(server)
+function onListen() {
+  console.log('Running on PORT 4000')
+}
 
-// function dispatchToClient() {
-//   const action = {
-//     type: 'SOME_ACTION',
-//     payload: 'insert payload here...'
-//   }
-//   io.emit('action', action)
-// }
-
-io.on(
-  'connection',
-  client => {
-    console.log('client.id test:'.yellow, client.id)
-
-    dispatchMessages()
-
-    client.on(
-      'disconnect',
-      () => console.log('disconnect test:'.yellow, client.id)
-    )
-  }
-)
+const server = app.listen(4000, onListen)

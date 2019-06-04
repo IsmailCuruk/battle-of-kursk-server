@@ -1,38 +1,63 @@
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
 
-
 const User = sequelize.define('users', {
-  firstName: {
-    type: Sequelize.STRING,
-    field: 'first_name',
-    allowNull: false
-  },
-  lastName: {
-    type: Sequelize.STRING,
-    field: 'last_name',
-    allowNull: false
-  },
   userName: {
     type: Sequelize.STRING,
     field: 'user_name',
-    allowNull: false
+    unique: true,
+    allowNull: false,
+    validate: {
+      notNull: { args: true, msg: "You must enter your username" }
+    }
   },
+
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notNull: { args: true, msg: "You must enter your email" }
+    }
+  },
+
   password: {
     type: Sequelize.STRING,
-    field: 'password',
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notNull: { args: true, msg: "You must enter your password" }
+    }
   },
+
+  firstName: {
+    type: Sequelize.STRING,
+    field: 'first_name',
+    allowNull: false,
+    validate: {
+      notNull: { args: true, msg: "You must enter your first name" }
+     }
+  },
+
+  lastName: {
+    type: Sequelize.STRING,
+    field: 'last_name',
+    allowNull: false,
+    validate: {
+      notNull: { args: true, msg: "You must enter your last name" }
+    }
+  },
+
   country: {
     type: Sequelize.STRING,
-    field: 'country',
-    allowNull: false
-  },
+    allowNull: false,
+    validate: {
+      notNull: { args: true, msg: "You must enter country" }
+    }
+  }
+
 }, {
     timestamps: false,
-    tableName: 'users',
-    underscored: true
-  })
-
+    tableName: 'users'
+  }
+)
 
 module.exports = User
