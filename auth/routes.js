@@ -5,19 +5,19 @@ const auth = require('./middleware')
 const router = new Router()
 
 router.post('/logins', (req, res, next) => {
-  const { email,password } = req.body
-    if(!email && !password) {
+  const { userName,password } = req.body
+    if(!userName && !password) {
     // 1. find user based on email address
       User
       .findOne({
         where: {
-          email: req.body.email
+          userName: req.body.user_name
         }
       })
       .then(entity => {
         if (!entity) {
           res.status(400).send({
-            message: 'User with that email does not exist'
+            message: 'Usename does not exist'
           })
         }
 

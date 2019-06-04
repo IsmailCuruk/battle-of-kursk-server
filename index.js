@@ -7,8 +7,6 @@ const usersRouter = require('./users/routes')
 const colors = require('colors');
 const cors = require('cors')
 
-const colors = require('colors');
-
 const app = express()
 const port = process.env.PORT || 4000
 
