@@ -6,6 +6,7 @@ const socketIo = require('socket.io')
 const cors = require('cors')
 const app = express()
 
+
 app.use(cors())
 app.use(bodyParser.json()) 
 
@@ -47,24 +48,5 @@ app.put('/games/:id', (req, res, next) => {
   })
 })
 
-function onListen () {
-  console.log('Listening on port 4000')
-}
-
-//const server = app.listen(4000, onListen)
-//const io = socketIo.listen(server)
-const games = []
-
-//io.on(
-//  'connection',
-//  client => {
-//    console.log('client.id test:', client.id)
-//    dispatchMessages()
-//    client.on(
-//      'disconnect',
-//      () => console.log('disconnect test:', client.id)
-//    )
-//  }
-//)
 
 module.exports = app
