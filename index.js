@@ -1,8 +1,10 @@
-const express = require('express')
-const socketIo = require('socket.io')
-const bodyParser = require('body-parser')
+const express = require('express');
+const socketIo = require('socket.io');
+const bodyParser = require('body-parser');
+const gamesRouter = require('./games/routes');
 const loginRouter = require('./auth/routes')
 const usersRouter = require('./users/routes')
+const colors = require('colors');
 const cors = require('cors')
 
 const colors = require('colors');
@@ -15,6 +17,7 @@ app
   .use(bodyParser.json())
   .use(loginRouter)
   .use(usersRouter)
+  .use(gamesRouter)
 
 function onListen() {
   console.log('Running on PORT 4000')
