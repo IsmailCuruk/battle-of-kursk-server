@@ -4,9 +4,17 @@ const sequelize = require('../db')
 
 const Game = sequelize.define('games', {
   winner: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.INTEGER,
+    allowNull: true
   },
+  loser: {
+    type: Sequelize.INTEGER,
+    allowNull: true
+  },
+  /*playTime: {
+    type: Sequelize.STRING,
+    allowNull: true
+  } */
 }, {
     timestamps: false,
     tableName: 'games',
