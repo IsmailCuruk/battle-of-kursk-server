@@ -1,17 +1,14 @@
 const { Router } = require('express')
-const router = new Router()
-const { toJWT } = require('./jwt')
-const User = require('../users/model')
-const bcrypt = require('bcrypt')
+const { toJWT, toData } = require('./jwt')
 const auth = require('./middleware')
 
-router.post('/logins', (req, res, next) => {  
-  if (!req.body.email || !req.body.password) {
-    res.status(400).send({
-      message: `Please supply a valid email and password`
-    })
-  } else {
-    User
+const router = new Router()
+
+router.post('/logins', (req, res, next) => {
+  const { email,password } = req.body
+    if(!email && !password) {
+    // 1. find user based on email address
+      User
       .findOne({
         where: {
           email: req.body.email
@@ -23,7 +20,11 @@ router.post('/logins', (req, res, next) => {
             message: 'User with that email does not exist'
           })
         }
+
+        // 2. use bcrypt.compareSync to check the password against the stored hash
         if (bcrypt.compareSync(req.body.password, entity.password)) {
+
+          // 3. if the password is correct, return a JWT with the userId of the user (user.id)
           res.send({
             jwt: toJWT({ userId: entity.id })
           })
@@ -39,12 +40,10 @@ router.post('/logins', (req, res, next) => {
         res.status(500).send({
           message: 'Something went wrong'
         })
-      })}
-})
-
-router.get('/games', auth, (req, res) => {
+      })
+    } 
   res.send({
-    message: `User ${req.user.email} is logged in.`,
+    jwt: toJWT({ userId: 1})
   })
 })
 
