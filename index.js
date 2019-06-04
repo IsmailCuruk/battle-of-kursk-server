@@ -28,7 +28,7 @@ const io = socketIo.listen(server)
 io.on(
   'connection', 
   user => {
-  console.log('client.id test:', user.id)
+  console.log('user.id test:', user.id)
 
     user.on(
       'disconnect', 
