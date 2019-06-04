@@ -27,7 +27,7 @@ app.post('/games', (req, res, next) => {
 })
 
 app.get('/games', (req, res, next) => { 
-  Game.findAll()
+  Game.findAll({order:[['id', 'DESC']]})
   .then(games => {
     res.json({ games: games })
   })
