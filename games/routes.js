@@ -10,10 +10,14 @@ app.use(cors())
 app.use(bodyParser.json()) 
 
 app.post('/games', (req, res, next) => {
+  const game = {
+    winner: req.body.winner,
+    loser: req.body.loser
+  }
   Game
-    .create(req.body)
+    .create(game)
     .then(game => {
-      return res.sendStatus(201).sendStatus(game)
+      return res.status(201).json(game)
     })
     .catch(error => {
       console.log(error)
@@ -23,8 +27,8 @@ app.post('/games', (req, res, next) => {
 
 app.get('/games', (req, res, next) => { 
   Game.findAll()
-  .then(game => {
-    res.send({ games })
+  .then(games => {
+    res.json({ games: games })
   })
   .catch(error => next(error))
 }) 
