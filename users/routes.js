@@ -19,7 +19,7 @@ router.post('/users', (req, res, next) => {
     .then(user => {
       if (!user) {
         return res.status(404).send({
-          message: `User does not exist`
+          message: `Couldn't create the user`
         })
       }
       return res.status(201).send(user)

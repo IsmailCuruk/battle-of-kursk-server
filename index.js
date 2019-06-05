@@ -18,7 +18,7 @@ app
   .use(gamesRouter)
 
 function onListen() {
-  console.log(`Running on port ${port}`)
+  console.log(`Running on port ${port}`.green)
 }
 
 const server = app.listen(4000, onListen)
@@ -28,9 +28,9 @@ const io = socketIo.listen(server)
 io.on(
   'connection', 
   user => {
-  console.log('user.id test:', user.id)
+  console.log('user.id test:'.yellow, user.id)
 
     user.on(
       'disconnect', 
-      () => console.log('disconnect test:', user.id))
+      () => console.log('disconnect test:'.yellow, user.id))
 })
