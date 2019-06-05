@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const bcrypt = require('bcrypt')
 const User = require('./model')
+const colors = require('colors');
 
 const router = new Router()
 
@@ -13,7 +14,7 @@ router.post('/users', (req, res, next) => {
     lastName: req.body.last_name,
     country: req.body.country
   }
-  console.log(req.body)
+  console.log('Body sent by client: \n'.cyan,req.body)
   User
     .create(user)
     .then(user => {

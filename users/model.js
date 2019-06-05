@@ -8,7 +8,7 @@ const User = sequelize.define('users', {
     unique: true,
     allowNull: false,
     validate: {
-      notNull: { args: true, msg: "You must enter your username" }
+      notNull: { args: true, msg: "You must enter an username" }
     }
   },
 
@@ -24,7 +24,7 @@ const User = sequelize.define('users', {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notNull: { args: true, msg: "You must enter your password" }
+      notNull: { args: true, msg: "You must enter a password" }
     }
   },
 
@@ -50,7 +50,7 @@ const User = sequelize.define('users', {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notNull: { args: true, msg: "You must enter country" }
+      notNull: { args: true, msg: "You must select a country" }
     }
   }
 
