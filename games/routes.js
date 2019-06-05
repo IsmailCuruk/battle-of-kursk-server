@@ -15,17 +15,10 @@ app.post('/games', (req, res, next) => {
     loser: req.body.loser,
     playerOne: req.body.playerOne,
     playerTwo: req.body.playerTwo,
-    board: [[0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0]]
-  }
+    board:  new Array(10).fill(0).map(() =>
+    new Array(10).fill(0))
+}
+
   Game
     .create(game)
     .then(game => {
