@@ -11,6 +11,16 @@ const Game = sequelize.define('games', {
     type: Sequelize.INTEGER,
     allowNull: true
   },
+  playerOne: {
+    type: Sequelize.INTEGER,
+    field: 'player_one',
+    allowNull: true
+  },
+  playerTwo: {
+    type: Sequelize.INTEGER,
+    field: 'player_two',
+    allowNull: true
+  },
   /*playTime: {
     type: Sequelize.STRING,
     allowNull: true

@@ -6,14 +6,15 @@ const socketIo = require('socket.io')
 const cors = require('cors')
 const app = express()
 
-
 app.use(cors())
 app.use(bodyParser.json()) 
 
 app.post('/games', (req, res, next) => {
   const game = {
     winner: req.body.winner,
-    loser: req.body.loser
+    loser: req.body.loser,
+    playerOne: req.body.playerOne,
+    playerTwo: req.body.playerTwo
   }
   Game
     .create(game)
@@ -39,7 +40,10 @@ app.put('/games/:id', (req, res, next) => {
   Game.findByPk(id)
   .then(game => game.update(req.body))
   .then(game => {
-    res.json({ message: `Game updated with user ${game.winner} as winner` })
+    res.json({ message: `Game updated. 
+                Player 1: ${game.playerOne} 
+                Player 2: ${game.playerTwo} 
+                Winner: ${game.winner}` })
 })
   .catch(err => {
     res.status(500).json({
