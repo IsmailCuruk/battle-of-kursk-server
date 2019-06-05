@@ -15,7 +15,9 @@ app.post('/games', (req, res, next) => {
     loser: req.body.loser,
     playerOne: req.body.playerOne,
     playerTwo: req.body.playerTwo,
-    board:  new Array(10).fill(0).map(() =>
+    playerOneBoard:  new Array(10).fill(0).map(() =>
+    new Array(10).fill(0)),
+    playerTwoBoard:  new Array(10).fill(0).map(() =>
     new Array(10).fill(0))
 }
 
