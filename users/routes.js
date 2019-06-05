@@ -14,7 +14,8 @@ router.post('/users', (req, res, next) => {
     lastName: req.body.last_name,
     country: req.body.country
   }
-  console.log('Body sent by client: \n'.cyan,req.body)
+  console.log('Body sent by client: \n'.cyan, req.body)
+  console.log('Body sent by server: \n'.cyan, res.body)
   User
     .create(user)
     .then(user => {
