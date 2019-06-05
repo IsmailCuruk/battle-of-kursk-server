@@ -35,6 +35,19 @@ app.get('/games', (req, res, next) => {
   .catch(error => next(error))
 }) 
 
+app.get('/games/:id', (req, res) => {
+  const id = req.params.id
+  Game.findByPk(id)
+  .then(game => {
+    res.json({ game: game })
+  })
+  .catch(err => {
+    res.status(500).json({
+      message: 'Something went wrong'
+    })
+  })
+})
+
 app.put('/games/:id', (req, res, next) => {
   const id = req.params.id
   Game.findByPk(id)
