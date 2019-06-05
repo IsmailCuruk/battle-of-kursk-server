@@ -14,7 +14,17 @@ app.post('/games', (req, res, next) => {
     winner: req.body.winner,
     loser: req.body.loser,
     playerOne: req.body.playerOne,
-    playerTwo: req.body.playerTwo
+    playerTwo: req.body.playerTwo,
+    board: [[0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0]]
   }
   Game
     .create(game)
