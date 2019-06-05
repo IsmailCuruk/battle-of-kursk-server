@@ -21,6 +21,10 @@ const Game = sequelize.define('games', {
     field: 'player_two',
     allowNull: true
   },
+  board: {
+    type: Sequelize.ARRAY(Sequelize.ARRAY(Sequelize.INTEGER)),
+    allowNull: false
+  }
   /*playTime: {
     type: Sequelize.STRING,
     allowNull: true
