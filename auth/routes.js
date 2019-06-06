@@ -4,7 +4,7 @@ const auth = require('./middleware')
 
 const router = new Router()
 
-router.post('/logins', (req, res, next) => {
+router.post('/login', (req, res, next) => {
   const { userName,password } = req.body
     if(!userName && !password) {
     // 1. find user based on email address
