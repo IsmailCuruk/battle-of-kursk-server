@@ -6,7 +6,6 @@ const loginRouter = require('./auth/routes')
 const usersRouter = require('./users/routes')
 const colors = require('colors');
 const cors = require('cors')
-
 const app = express()
 const port = process.env.PORT || 4000
 
@@ -21,8 +20,7 @@ function onListen() {
   console.log(`Running on port ${port}`.green)
 }
 
-const server = app.listen(4000, onListen)
-
+const server = app.listen(port, onListen)
 const io = socketIo.listen(server)
 
 io.on(
