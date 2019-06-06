@@ -15,10 +15,26 @@ app.post('/games', (req, res, next) => {
     loser: req.body.loser,
     playerOne: req.body.playerOne,
     playerTwo: req.body.playerTwo,
-    playerOneBoard:  new Array(10).fill(0).map(() =>
-    new Array(10).fill(0)),
-    playerTwoBoard:  new Array(10).fill(0).map(() =>
-    new Array(10).fill(0))
+    playerOneBoard:  new Array(10).fill(0)
+      .map(() => new Array(10).fill(0)),
+    playerTwoBoard:  new Array(10).fill(0)
+      .map(() => new Array(10).fill(0)),
+    playerOneArmoredVehiclesCount: 3,
+    playerOneArmoredVehiclesSize: 2,
+    playerOneLightTanksCount: 2,
+    playerOneLightTanksSize: 3,
+    playerOneMediumTanksCount: 2,
+    playerOneMediumTanksSize: 4,
+    playerOneHeavyTanksCount: 1,
+    playerOneHeavyTanksSize: 5,
+    playerTwoArmoredVehiclesCount: 3,
+    playerTwoArmoredVehiclesSize: 2,
+    playerTwoLightTanksCount: 2,
+    playerTwoLightTanksSize: 3,
+    playerTwoMediumTanksCount: 2,
+    playerTwoMediumTanksSize: 4,
+    playerTwoHeavyTanksCount: 1,
+    playerTwoHeavyTanksSize: 5
 }
 
   Game
