@@ -16,7 +16,8 @@ app.post('/romans', (req, res, next) => {
     playerOne: req.body.playerOne,
     playerTwo: req.body.playerTwo,
     roundsPlayed: 0,
-    numbers: []
+    numbers: [],
+    answer: req.body.answer
 }
   Roman
     .create(roman)

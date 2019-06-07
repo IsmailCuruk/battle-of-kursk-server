@@ -29,6 +29,10 @@ const Roman = sequelize.define('romans', {
   numbers: {
     type: Sequelize.ARRAY(Sequelize.INTEGER),
     allowNull: false
+  },
+  answer: {
+    type: Sequelize.STRING,
+    allowNull: true
   }
   /*playTime: {
     type: Sequelize.STRING,
