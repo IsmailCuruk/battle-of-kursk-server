@@ -25,7 +25,11 @@ const Roman = sequelize.define('romans', {
     type: Sequelize.INTEGER,
     field: 'rounds_played',
     allowNull: false
-  }  
+  },
+  numbers: {
+    type: Sequelize.ARRAY(Sequelize.INTEGER),
+    allowNull: false
+  }
   /*playTime: {
     type: Sequelize.STRING,
     allowNull: true
