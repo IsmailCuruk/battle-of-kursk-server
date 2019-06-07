@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const gamesRouter = require('./games/routes');
 const loginRouter = require('./auth/routes')
 const usersRouter = require('./users/routes')
+const romansRouter = require('./romans/routes')
 const colors = require('colors');
 const cors = require('cors')
 const app = express()
@@ -15,6 +16,7 @@ app
   .use(loginRouter)
   .use(usersRouter)
   .use(gamesRouter)
+  .use(romansRouter)
 
 function onListen() {
   console.log(`Running on port ${port}`.green)
